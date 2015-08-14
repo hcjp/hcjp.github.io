@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>播放列表</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+	body,div,ul,li{margin: 0;padding: 0;color: #6B7980;}
+	#wrap{width: 198px;border: 1px solid #ccc;overflow: hidden;margin: 30px auto;}
+	#top{width: 186px;height: 28px;padding: 0 5px;border: 1px solid #fff;background:#ced3d7;line-height: 28px;font-size: 14px;cursor: pointer;}
+	#wrap ul{width: 198px;/*height: 144px;*/border-top: 1px solid #E9EDF2;}
+	#wrap ul li{width: 188px;height: 24px;padding: 0 5px;background: #E9EDF2;font-size: 12px;line-height: 24px;}
+	#wrap ul li:hover{background: #fff;}
+	/*垂直翻转*/
+	.flipy{
+		-moz-transform:scaleY(-1);
+		-webkit-transform:scaleY(-1);
+		-o-transform:scaleY(-1);
+		transform:scaleY(-1);
+		/*IE*/
+		filter:FlipV;
+	}
+	/*css三角，均是向下方向*/
+	.cor{display:inline-block; width:0; height:0;margin-left: 90px; margin-bottom:-2px; border-width:4px; border-style:solid dashed dashed; overflow:hidden;}
+	/*深灰色*/
+	.corg6{border-color:#666 transparent transparent;}
+	.cors{margin-bottom:auto; vertical-align:2px;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oWrap = document.getElementById('wrap');
+		var oTop = document.getElementById('top');
+		var oUl = oWrap.getElementsByTagName('ul')[0];
+		var oI = document.getElementById('flipCor');
+		oUl.style.display = 'none';
+		oTop.onclick =function(){
+			$('#flipCor').hasClass('flipy') ? $('#flipCor').removeClass('flipy') : $('#flipCor').addClass('flipy');
+			$('#flipCor').hasClass('cors') ? $('#flipCor').removeClass('cors') : $('#flipCor').addClass('cors');
+			var flag = oUl.style.display;
+			oUl.style.display = flag == 'none' ? 'block' : 'none'; 
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="top">播放列表...<i id="flipCor" class="cor corg6"></i></div>
+		<ul>
+			<li>夜曲 - 周杰伦</li>
+			<li>麦芽糖 - 周杰伦</li>
+			<li>甜甜的 - 周杰伦</li>
+			<li>摩羯座 - 周杰伦</li>
+		</ul>
+	</div>
+</body>
+</html>

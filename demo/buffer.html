@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>缓冲运动</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src=''></script>
+		<style type="text/css">
+		*{padding: 0;margin: 0;}
+		#warp{width: 500px;height: 300px;position: relative;float: left;}
+		#div1{width: 100px;height: 100px;background: #ccc;position: absolute;left: 0px;}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+
+			var oDiv = document.getElementById('div1');
+
+			var oBtnR = document.getElementById('AnimeR');
+			var oBtnL = document.getElementById('AnimeL');
+
+			oBtnR.onclick = function(){
+				startMove(400);
+			}
+			oBtnL.onclick = function(){
+				startMove(0);
+			}
+			var timer = null;
+			function startMove(iTarget){
+				
+				clearInterval(timer);
+				timer = setInterval(function(){
+					var iSpeed = (iTarget - oDiv.offsetLeft)/8;
+					iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+					if(oDiv.offsetLeft == iTarget){
+						clearInterval(timer);
+					}else{
+						oDiv.style.left = oDiv.offsetLeft + iSpeed + 'px';
+					}
+				},30);
+			}
+
+
+
+		}
+		</script>
+	</head>
+	<body>
+		<button id="AnimeR">向右运动</button>
+		<button id="AnimeL">向左运动</button>
+		<div id="warp">
+			<div id="div1"></div>
+		</div>
+		<span style="width:1px;height:300px;border-left:1px solid red;display:block;float:left;"></span>
+	</body>
+</html>

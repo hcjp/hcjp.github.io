@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{padding: 0;margin: 0;}
+    ul,li{list-style-type: none;}
+    .box{margin: 0 auto;overflow: hidden;width: 1010px;height: 220px;margin-top: 200px;position: relative;}
+    .circle li{width: 200px;height: 200px;border-radius: 50%;border: 1px solid #fff;float: left;text-align: center;line-height: 100px;color: #ddd;background: #fff;overflow: hidden;cursor: pointer;}
+    .circle li img{width: 100%;}
+    .circle li span{display: none;width: 200px;height: 100px;border-radius:0 0 50% 50%;background: rgba(90,223,102,.8);position: absolute;bottom: 0;left: 0;line-height: 100px;color: #fff;font-size: 20px;}
+    .circle li.big:hover span{display: block;}
+    .prev,.next{font-size: 50px;position: absolute;width: 50px;height: 80px;line-height: 80px;top: 50%;margin-top: -50px;text-align: center;cursor: pointer;}
+    .slide:hover .prev,.slide:hover .next{background: rgba(100,100,100,.3);display: block;}
+    .next{right: 0;}
+    </style>
+    <script src="http://source.yimai.com/data/resource/js/jquery.js"></script>
+</head>
+<body>
+    <div class="box">
+        <ul class="circle">
+            <li>
+                <img src="http://img1.cache.netease.com/catchpic/9/9D/9D91BC2E728209551ECFB9707EC61398.jpg" alt="">
+                <span>高圆圆</span>
+            </li>
+            <li>
+                <img src="http://hair.fashionguide.com.tw/uploads/hair_pic/file/77678/hair_pics_file_1367574527.jpg" alt="">
+                <span>朴信惠</span>
+            </li>
+            <li>
+                <img src="http://www.qqzhi.com/uploadpic/2014-05-29/214822459.jpg" alt="">
+                <span>鸣人</span>
+            </li>
+            <li>
+                <img src="http://img4.duitang.com/uploads/item/201309/17/20130917060702_sSShN.thumb.600_0.jpeg" alt="">
+                <span>伊恩惠</span>
+            </li>
+            <li>
+                <img src="http://www.baiyumedia.com/_c_oQI2EjOjZ9ylp2twjm5YBesbD_4islQpUbRIjYyeZ06yJ1HHrdEDFMcgS9fWsZ4Ua1ZKiC7mTnq-sykfwxnRbU_m5P_tqRJalj-tQfk5Ork=.jpg" alt="">
+                <span>韩佳人</span>
+            </li>
+        </ul>
+        <div class="prev"><</div>
+        <div class="next">></div>
+    </div>
+
+    <script>
+    $(function(){
+        var oLis = $('.circle li');
+
+        var nL = oLis.length;
+        var middle = (nL-1)/2;
+        var _arr = [];
+        var _zArr = [];
+        var _MoM = 0;
+        oLis.each(function(index) {
+            var _that = $(this);
+            _that.index = index;
+            _MoM = Math.abs(2*(middle-index));
+            _that.mouseover(function(){
+
+            })
+            getAttr(_that,_MoM);
+        });
+
+        changeStyle(true);
+
+
+        $('.prev').click(function(){
+            _arr.push(_arr.shift());
+            changeStyle();
+        });
+
+        $('.next').click(function(){
+            _arr.unshift(_arr.pop());
+            changeStyle();
+        });
+
+
+        function changeStyle(init){
+            oLis.each(function(index){
+                $(this).removeClass('big');
+                var _that = $(this);
+                _that.index = index;
+                setAttr(_that,init);
+            });
+        }
+        function getAttr(o,m){ {};
+            if(m === undefined){m =1;}
+            var _index = o.index;
+            var _m = !m ? 1 : m;
+            var p = $('.box');
+            var _attr = {};
+            _zArr.push(999 - _m);
+            _attr._left = o.offset().left - p.offset().left;
+            _attr._top = o.offset().top - p.offset().top;
+            _attr._w = o.width() / _m;
+            _attr._h = o.height() / _m;
+            _attr._hl = o.height() / _m;
+            _attr._ml = (o.width() - _attr._w) / 2;
+            _attr._mt = (o.height() - _attr._h) / 2;
+            _attr._z = 999 - _m;
+            _arr.push(_attr);
+        }
+        function setAttr(o,init){
+            var _index = o.index;
+            if(init){
+                o.css({
+                    'left': _arr[_index]._left + 'px',
+                    'top': _arr[_index]._top + 'px',
+                    'width': _arr[_index]._w + 'px',
+                    'height':_arr[_index]._h + 'px',
+                    'marginLeft':_arr[_index]._ml + 'px',
+                    'marginTop':_arr[_index]._mt + 'px',
+                    'line-height':_arr[_index]._h + 'px',
+                    'z-index':_arr[_index]._z,
+                    'position':'absolute',
+                    'float':'none'
+                });
+                if(parseInt(o.css('marginTop')) == 0){
+                    o.addClass('big').siblings().removeClass('big');
+                }
+            }else{
+                o.css({'z-index':_arr[_index]._z});
+                o.animate({
+                    'left': _arr[_index]._left + 'px',
+                    'top': _arr[_index]._top + 'px',
+                    'width': _arr[_index]._w + 'px',
+                    'height':_arr[_index]._h + 'px',
+                    'marginLeft':_arr[_index]._ml + 'px',
+                    'marginTop':_arr[_index]._mt + 'px',
+                    'line-height':_arr[_index]._h + 'px',
+                    'position':'absolute',
+                    'float':'none'
+                },1000,function(){
+                    if(parseInt($(this).css('marginTop')) == 0){
+                        $(this).addClass('big').siblings().removeClass('big');
+                    }
+                });
+            }
+        }
+    })
+    </script>
+</body>
+</html>

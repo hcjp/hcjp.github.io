@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>无规则切换背景</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<script type="text/javascript" src="public.js"></script>
+	<style type="text/css">
+	#warp{width:500px;margin:0 auto;overflow:hidden;zoom:1;}
+	#warp div{width: 100px;height: 100px;margin-right: 20px;float: left;background: #ccc;overflow:hidden;}
+	#span1{display: block;
+		width: 242px; 
+		height: 242px; 
+		background: purple;
+		margin: -22px 0 0 -52px;
+		/* Rotate */
+		/*-webkit-transform: rotate(-45deg);
+		-moz-transform: rotate(-45deg);
+		-ms-transform: rotate(-45deg);
+		-o-transform: rotate(-45deg);*/
+		transform: rotate(-45deg);
+		/* Rotate Origin */
+		/*-webkit-transform-origin: 0 100%;
+		-moz-transform-origin: 0 100%;
+		-ms-transform-origin: 0 100%;
+		-o-transform-origin: 0 100%;*/
+		transform-origin: 50% 50%;
+	}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oBtn1 = document.getElementById('btn1');
+		var oBtn2 = document.getElementById('btn2');
+		var oSpan1 = document.getElementById('span1');
+		oBtn1.onclick = function(){
+			buffer(oSpan1,{'marginLeft':150});
+		}
+		oBtn2.onclick = function(){
+			oSpan1.style.marginLeft = -52 + 'px';
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="warp">
+		<button id="btn1">开始</button>
+		<button id="btn2">重置</button>
+		<div id="div1">
+			<span id="span1"></span>
+		</div>
+	</div>
+</body>
+</html>

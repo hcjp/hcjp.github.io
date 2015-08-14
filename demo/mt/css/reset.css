@@ -1,0 +1,14 @@
+*{
+	margin: 0px auto;
+	padding: 0px;
+	text-decoration: none;
+	list-style-type: none;
+	font: 12px/20px Tahoma,Helvetica,arial,sans-serif;
+	color: rgb(0,0,0);
+}
+body{
+	background: rgb(226,241,243);
+}
+img{
+	border: none;
+}

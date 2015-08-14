@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>评分</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<style type="text/css">
+		div,ul,li,span{margin: 0;padding: 0;}
+		#wrap{width: 500px;margin: 30px auto;}
+		ul{width: 120px;position: relative;font-size: 12px;}
+		li{width: 24px;height: 19px;list-style-type: none;float: left;background: url(star.png) no-repeat;cursor: pointer;}
+		li.on{background-position:0 -28px;}
+		#msg{width: 159px;height: 60px;background: url(icon.gif);top: 19px;position: absolute;display: none;padding:7px 10px 0;}
+		em{color:#f60;display:block;font-style:normal;}
+		#end{font-size: 12px;height: 20px;line-height: 20px;}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oLis = document.getElementsByTagName('li');
+			var oMsg = document.getElementById('msg');
+			var oEnd = document.getElementById('end');
+			var i = iScore = iStar = 0;
+			var aMsg = [
+				"很不满意|差得太离谱，与卖家描述的严重不符，非常不满",
+				"不满意|部分有破损，与卖家描述的不符，不满意",
+				"一般|质量一般，没有卖家描述的那么好",
+				"满意|质量不错，与卖家描述的基本一致，还是挺满意的",
+				"非常满意|质量非常好，与卖家描述的完全一致，非常满意"
+				];
+
+			for(var i = 0;i < oLis.length;i++){
+				oLis[i].index = i;
+				oLis[i].onmouseover = function(){
+					fnPoint(this.index);
+					//浮动层显示
+					oMsg.style.display = "block";
+					//计算浮动层位置
+					oMsg.style.left = (this.index + 1) * this.offsetWidth - 104 + "px";
+					//匹配浮动层文字内容
+					oMsg.innerHTML = "<em><b>" + (this.index+1) + "</b> 分 " + aMsg[this.index].match(/(.+)\|/)[1] + "</em>" + aMsg[this.index].match(/\|(.+)/)[1];
+				}
+				oLis[i].onmouseout = function(){
+					fnPoint();
+					//关闭浮动层
+					oMsg.style.display = "none";
+				}
+				oLis[i].onclick = function(){
+					iStar = this.index;
+					fnPoint(iStar);
+					oEnd.innerHTML = "<strong>" + (this.index+1) + " 分</strong> (" + aMsg[this.index].match(/\|(.+)/)[1] + ")"
+				}
+			}
+			function fnPoint(iArg){
+				iScore = iArg || iStar;
+				for (i = 0; i < oLis.length; i++){
+					oLis[i].className = i <= iScore ? "on" : "";
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<ul>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+				<div id="msg"></div>
+			</ul>
+			<div id="end"></div>
+		</div>
+	</body>
+</html>

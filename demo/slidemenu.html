@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>弹性效果菜单</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src=''></script>
+		<style type="text/css">
+		#wrap{width: 350px;height: 500px;border: 12px solid #EEE;border-radius: 10px;margin: 10px auto;padding: 5px;}
+		ul,li{list-style-type: none;margin: 0;padding: 0;}
+		ul{position: relative;}
+		li{width: 80px;height: 30px;text-align: center;float: left;background: #ccc;line-height: 30px;font-size: 12px;cursor: pointer;}
+		#ibg{width: 78px;height:28px;overflow: hidden; background:rgba(248,248,242,.6); border: 1px solid rgba(39,40,34,.6); position: absolute;left: 0;z-index: 1;}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var iSpeed = 0,left = 0;
+			var aLi=document.getElementsByTagName('li');
+			var oBg=aLi[aLi.length-1];
+			for(i=0;i<aLi.length-1;i++){
+				aLi[i].onmouseover=function (){
+					startMove(oBg, this.offsetLeft);
+				};
+			}
+			function startMove(obj, iTarget){
+				clearInterval(obj.timer);
+				obj.timer=setInterval(function (){
+					iSpeed+=(iTarget-obj.offsetLeft)/5;
+					iSpeed*=0.7;
+					left+=iSpeed;
+					if(Math.abs(iSpeed)<1 && Math.abs(left-iTarget)<1){
+						clearInterval(obj.timer);
+						obj.style.left=iTarget+'px';
+					}else{
+						obj.style.left=left+'px';
+					}
+				}, 30);
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<ul>
+				<li>音乐</li>
+				<li>房产</li>
+				<li>汽车</li>
+				<li>旅游</li>
+				<li id="ibg"></li>
+			</ul>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{margin: 0;padding: 0;}
+    body{font-size: 12px;}
+    ul,li{list-style-type: none;}
+    .yDate-wrap{width: 250px;height: 200px;margin: 100px auto 0;border: 1px solid #ddd;}
+    .yDate-tool-top{width: 250px;height: 20px;background: #ddd;position: relative;}
+    .yDate-days{width: 250px;height: 160px;}
+    .yDate-tool-floor{width: 250px;height: 20px;background: #ddd;}
+
+
+    .yDate-tool-top p{line-height: 20px;text-align: center;}
+    .yDate-tool-top span{width: 20px;height: 20px;position: absolute;top: 0;cursor: pointer;text-align: center;line-height: 20px;border-radius: 50%;}
+    .yDate-tool-top span:hover{background: #f5f5f5;}
+    .yDate-tool-top span.prev{left: 0;}
+    .yDate-tool-top span.next{right: 0;}
+    ul.week-list li,ul.day-list li{float: left;width: 35px;text-align: center;line-height: 20px;font-size: 12px;}
+    ul.day-list li.curr{background: red;}
+    ul.day-list li.pn{color: #ddd;}
+    </style>
+</head>
+<body>
+    <div class="yDate-wrap">
+        <div class="yDate-tool-top">
+            <p></p>
+            <span class="prev"><</span>
+            <span class="next">></span>
+        </div>
+        <div class="yDate-days">
+            <div class="week">
+                <ul class="week-list">
+                    <li>日</li>
+                    <li>一</li>
+                    <li>二</li>
+                    <li>三</li>
+                    <li>四</li>
+                    <li>五</li>
+                    <li>六</li>
+                </ul>
+            </div>
+            <div class="days">
+                <ul class="day-list"></ul>
+            </div>
+        </div>
+        <div class="yDate-tool-floor"></div>
+    </div>
+    <script src="http://source.yimai.com/data/resource/js/jquery.js"></script>
+    <script>
+
+    $(function(){
+        function is_leap(year) {
+           return (year%100==0?res=(year%400==0?1:0):res=(year%4==0?1:0));
+        } //是否为闰年
+
+        var nstr=new Date(); //当前Date资讯
+        var ynow=nstr.getFullYear(); //年份
+        var mnow=nstr.getMonth(); //月份
+        var dnow=nstr.getDate(); //今日日期
+        var n1str=new Date(ynow,mnow,1); //当月第一天Date资讯
+        $('.yDate-tool-top p').html(ynow + '年' + (mnow + 1) + '月');
+
+		var ypre=ynow;
+		var mpre=mnow-1;
+		if(mpre<0){
+			ypre-=1;
+			mpre=11;
+		}
+		var m_days_pre=new Array(31,28+is_leap(ypre),31,30,31,30,31,31,30,31,30,31); //各月份的总天数
+
+        var firstday=n1str.getDay(); //当月第一天星期几
+		if(firstday==0) firstday=7;
+
+        var m_days=new Array(31,28+is_leap(ynow),31,30,31,30,31,31,30,31,30,31); //各月份的总天数
+
+		var tr_str=6;
+
+        var tml = '';
+        for(i=0;i<tr_str;i++) { //表格的行
+           for(k=0;k<7;k++) { //表格每行的单元格
+              idx=i*7+k; //单元格自然序列号
+              date_str=idx-firstday+1; //计算日期
+            console.log(idx + ':' + date_str);
+			  if(date_str>m_days[mnow]){//下个月
+				  date_str-=m_days[mnow];
+			  }else if(date_str<=0){//上个月
+				  date_str+=m_days_pre[mpre];
+			  }else{
+                  tml += (date_str == dnow) ? '<li class="curr">' + date_str + '</li>' : '<li>' + date_str + '</li>';
+                  continue;
+			  }
+              tml += '<li class="pn">' + date_str + '</li>';
+           }
+        }
+        $('.day-list').html(tml);
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<meta http-equiv="x-ua-compatible" content="ie=edge,chrome=1"/>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="">
+	<script type="text/javascript" src="jquery.js"></script>
+	<style type="text/css">
+	*{margin: 0;padding: 0;}
+	body{font: 12px/1.14 "Arial","Hiragino Sans GB",宋体,"Georgia","serif";}
+	img{border: none;}
+	a{text-decoration: none;}
+	ul,li{list-style-type: none;}
+	.wrap{margin: 20px auto;width: 360px;}
+	.tab-title{border: 1px solid #dbdee1;height: 34px;background: #F6F6F6;}
+	.tab-title span{float: left;padding: 0 13px;line-height: 36px;}
+	.tab-title span a{font-size: 14px;color: #000;}
+	.tab-title span.f1{margin-left: -1px;border-left: none !important;padding-left: 13px;}
+	span.select{height: 33px;border-top: 3px solid #FF8400;background: #fff;margin-top: -1px;border-right: 1px solid #dbdee1;border-left: 1px solid #dbdee1;line-height: 32px;padding: 0 12px;}
+	
+
+	.tab-con{clear: both;padding-top: 10px;font-size: 14px;}
+	.tab-con ul{line-height: 24px;}
+	.con1 img{float: left;width: 105px;height: 90px;}
+	.con1 ul{padding-left: 15px;float: left;}
+	.con1 ul li,.con2 ul li{padding-left: 10px;background: url(icon.png) no-repeat 0 -881px;}
+
+	.con2{clear: both;}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<div class="tab-title">
+			<span class="f1 select">
+				<a href="">娱乐</a>
+			</span>
+			<span>
+				<a href="">八卦</a>
+			</span>
+			<span>
+				<a href="">大片</a>
+			</span>
+		</div>
+		<div class="tab-con">
+			<div class="con1">
+				<a href="#"><img src="4.jpg"></a>
+				<ul>
+					<li>
+						<a href="">毛泽东的四位孙辈今何在(组图)</a>
+					</li>
+					<li>
+						<a href="">周永康与那些落马大老虎的合影照</a>
+					</li>
+					<li>
+						<a href="">粟裕大将与叶剑英辩论罕见历史照</a>
+					</li>
+					<li>
+						<a href="">毛泽东的晚年失误“在政不在制”</a>
+					</li>
+				</ul>
+			</div>
+			<div class="con2">
+				<ul>
+					<li>
+						<a href="">毛泽东的四位孙辈今何在(组图)</a>
+					</li>
+					<li>
+						<a href="">周永康与那些落马大老虎的合影照</a>
+					</li>
+					<li>
+						<a href="">粟裕大将与叶剑英辩论罕见历史照</a>
+					</li>
+					<li>
+						<a href="">毛泽东的晚年失误“在政不在制”</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+	$(function(){
+		$('.tab-title span').mouseover(function(){
+			$('.select').removeClass('select');
+			$(this).addClass('select');
+		});
+		$('.tab-title span a').mouseover(function(){
+			$('.tab-title span a').css('color','#000');
+			$(this).css('color','#FF8400');
+		});
+		$('.tab-title span a').mouseout(function(){
+			$('.tab-title span a').css('color','#000');
+		});
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+    *{margin: 0;padding: 0;}
+    .wrap{width: 400px;height: 200px;margin: 80px auto 0;background: #ddd;}
+    .box{width: 196px;height: 16px;border-radius: 12px;background: #000;border: 1px solid #fff;float: left;margin-left: 100px;margin-top: 80px;padding: 2px;}
+    .plan{width: 10px;height: 16px;background: #fff;border-radius: 10px;text-align: center;font-size: 12px;color: #000;line-height: 16px;}
+    </style>
+    <script src="http://source.yimai.com/data/resource/js/jquery.js"></script>
+</head>
+<body>
+    <div class="wrap">
+        <div class="box">
+            <div class="plan"><em>0</em>%</div>
+        </div>
+    </div>
+    <script>
+    $(function(){
+        var oPlan = $('.plan');
+        var oBox = $('.box');
+        function changePlan(v){
+            oPlan.animate({'width': (v/100)*oBox.width() + 'px'}, 300,function(){
+                oPlan.find('em').html(Math.round((oPlan.width()/oBox.width())*100));
+            });
+        }
+        function valuePlan(){
+            for(var i = 10;i < 100;i++){
+                changePlan(i);
+            }
+            changePlan(100);
+        }
+        valuePlan();
+    });
+    </script>
+</body>
+</html>

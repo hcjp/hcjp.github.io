@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>判断鼠标进入容易的方向，js判断划入方向</title>
+<script src="http://source.yimai.com/data/resource/js/jquery.js"></script>
+<style>
+.wrap{width: 400px;height: 400px;margin: 100px auto;}
+.box{width: 200px;height: 200px;position:relative;zoom:1;overflow: hidden;float: left;}
+.con1{height: 200px;background-color: orange;text-align: center;line-height: 200px;}
+.con2{position: absolute;left: -200px;top: -200px;width: 200px;height: 200px;background-color: red;text-align: center;line-height: 200px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+    <div class="box">
+        <div class="con1">
+            #box1
+        </div>
+        <div class="con2">
+            #box2
+        </div>
+    </div>
+    <div class="box">
+        <div class="con1">
+            #box1
+        </div>
+        <div class="con2">
+            #box2
+        </div>
+    </div>
+    <div class="box">
+        <div class="con1">
+            #box1
+        </div>
+        <div class="con2">
+            #box2
+        </div>
+    </div>
+    <div class="box">
+        <div class="con1">
+            #box1
+        </div>
+        <div class="con2">
+            #box2
+        </div>
+    </div>
+</div>
+<script>
+$.fn.qh = function(options) {
+    var defaults = {};
+    var settings = $.extend({},defaults, options);
+    return this.each(function(){
+        $(this).on("mouseenter mouseleave",function(e) {
+            var w = $(this).width();
+            var h = $(this).height();
+            var x=(e.pageX-this.offsetLeft-(w/2))*(w>h?(h/w):1);
+            var y=(e.pageY-this.offsetTop-(h/2))*(h>w?(w/h):1);
+            var dirNum=Math.round((((Math.atan2(y,x)*(180/Math.PI))+180)/90)+3)%4;
+            var eventType = e.type;
+            var aPos=[{left:0,top:-200},{left:200,top:0},{left:0,top:200},{left:-200,top:0}];
+            if(eventType == 'mouseenter'){
+                $(this).find('.con2').css(aPos[dirNum]).stop(true,true).animate({left:0,top:0},200);
+            }else{
+                $(this).find('.con2').stop(true,true).animate(aPos[dirNum],200);
+            }
+        });
+    });
+};
+$(function(){
+    $('.box').qh();
+});
+</script>
+</body>
+</html>

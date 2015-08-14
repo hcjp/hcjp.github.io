@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>淡入淡出效果</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<style type="text/css">
+		#wrap{width: 350px;height: 500px;border: 12px solid #EEE;border-radius: 10px;margin: 10px auto;padding: 5px;}
+		#img1{filter:alpha(opacity:30);opacity:.3;width: 300px;cursor: pointer;}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+
+			var oImg = document.getElementById('img1');
+
+			oImg.onmouseover = function(){
+				startAnime(100);
+			}
+			oImg.onmouseout= function(){
+				startAnime(30);
+			}
+			var timer = null;
+			var alpha = 30;
+			function startAnime(iTarget){
+				var iSpeed = 0;
+				if(alpha < iTarget){
+					iSpeed = 10;
+				}else{
+					iSpeed = -10;
+				}
+				clearInterval(timer);
+				timer = setInterval(function(){
+					if(alpha == iTarget){
+						clearInterval(timer);
+					}else{
+						alpha += iSpeed;
+						oImg.style.filter = 'alpha(opacity:' + alpha +')';
+						oImg.style.opacity = alpha/100;
+						document.title = alpha;
+					}
+				},30);
+			}
+
+		}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<img id="img1" src="fade.png"/>
+		</div>
+	</body>
+</html>

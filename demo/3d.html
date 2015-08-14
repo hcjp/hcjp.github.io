@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>3D翻转</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src=''></script>
+		<style type="text/css">
+		body,div{margin: 0;padding: 0;}
+		#wrap{width: 200px;height: 200px;border: 1px solid black;margin: 30px auto;perspective:800px;-webkit-perspective:800px;cursor: pointer;}
+		#box{position: relative;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:2s all;-webkit-transition:3s all;}
+		.circle{ 
+			width: 100px; 
+			height: 100px; 
+			-moz-border-radius: 50px; 
+			-webkit-border-radius: 50px; 
+			border-radius: 50px; 
+			position: absolute;top: 0;left: 50px;
+			font-size: 100px;
+			line-height: 100px;
+			font-weight: 200px;
+			color: #fff;
+			text-align: center;
+		}
+		#circle1{
+			background: red;
+		}
+		#circle2{
+			background: blue;
+			transform:rotateY(180deg);
+			-webkit-transform:rotateY(180deg);
+			backface-visibility:hidden;
+			-webkit-backface-visibility:hidden;	/* Chrome 和 Safari */
+			-moz-backface-visibility:hidden; 	/* Firefox */
+			-ms-backface-visibility:hidden; 	/* Internet Explorer */
+		}
+		#wrap:hover #box{transform:rotateY(180deg);-webkit-transform:rotateY(180deg);}
+		</style>
+		<script type="text/javascript">
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box">
+				<div id="circle1" class="circle"><span>1</span></div>
+				<div id="circle2" class="circle"><span>2</span></div>
+			</div>
+		</div>
+	</body>
+</html>

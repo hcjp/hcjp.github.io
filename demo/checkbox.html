@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>复选框操作</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src='public.js'></script>
+		<style type="text/css">
+		body,div,input,a{margin: 0;padding: 0;}
+		#wrap{width: 200px;margin: 30px auto;border-radius: 4px;border: 1px solid #ccc;padding: 10px;font-size: 14px;}
+		#actionBox{border-bottom: 1px solid #ccc;padding-bottom: 10px;line-height: 14px;}
+		#checkBox{line-height: 20px;padding: 10px 0;}
+		#sub{border-top: 1px solid #ccc;padding-top: 5px;}
+		#show{width: 400px;border-radius: 4px;border: 1px solid #ccc;padding: 10px;display: none;margin: 10px auto;text-align: center;}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oAll = document.getElementById('allCheck');
+			var oChecks = getElementsByClassName('check','','input');
+			var oReverse = document.getElementById('reverse');
+			var oSubmit = document.getElementById('submit');
+			var oLabels = getElementsByClassName('label','','label');
+			var oShow = document.getElementById('show');
+			var oReset = document.getElementById('reset');
+			/*全选*/
+			oAll.onclick = function(){
+				console.log(allCheck.checked);
+				if(allCheck.checked){
+					for(var i = 0;i < oChecks.length;i++){
+						check('all',i);
+					}
+				}else{
+					for(var i = 0;i < oChecks.length;i++){
+						check('none',i);
+					}
+				}
+				
+			}
+			function check(sw,index){
+				if(sw == 'all'){
+					oChecks[index].checked = true;
+				}
+				if(sw == 'none'){
+					oChecks[index].checked = false;
+				}
+				
+			}
+			/*反选*/
+			oReverse.onclick = function(){
+				for(var i = 0;i < oChecks.length;i++){
+					reverse(i);
+				}
+			}
+			function reverse(index){
+				if(oChecks[index].checked){
+					oChecks[index].checked = false;
+					allCheck.checked = false;
+				}else{
+					oChecks[index].checked = true;
+				}
+			}
+			/*提交*/
+			oSubmit.onclick = function(){
+				var str = '';
+				for(var i = 0;i < oChecks.length;i++){
+					if(oChecks[i].checked){
+						str += oLabels[i].innerHTML;
+					}
+				}
+				oShow.innerHTML = '您选择了:' + str;
+				oShow.style.display = 'block';
+			}
+			/*重置*/
+			oReset.onclick = function(){
+				for(var i = 0;i < oChecks.length;i++){
+					oChecks[i].checked = false;
+				}
+				oShow.innerHTML = '';
+				oShow.style.display = 'none';
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="actionBox">
+				<input type="checkbox" value="" id="allCheck" /><label for="allCheck"> 全选</label>
+				<a href="javascript:;" id="reverse">反选</a>
+			</div>
+			<div id="checkBox">
+				<input name="test" type="checkbox" value="0" id="check1" class="check"/><label for="check1" class="label"> 选项1</label><br/>
+				<input name="test" type="checkbox" value="1" id="check2" class="check"/><label for="check2" class="label"> 选项2</label><br/>
+				<input name="test" type="checkbox" value="2" id="check3" class="check"/><label for="check3" class="label"> 选项3</label><br/>
+				<input name="test" type="checkbox" value="3" id="check4" class="check"/><label for="check4" class="label"> 选项4</label><br/>
+				<input name="test" type="checkbox" value="4" id="check5" class="check"/><label for="check5" class="label"> 选项5</label><br/>
+				<input name="test" type="checkbox" value="5" id="check6" class="check"/><label for="check6" class="label"> 选项6</label>
+			</div>
+			<div id="sub">
+				<input id="submit" type="button" value="提交" />
+				<input id="reset" type="button" value="重置" />
+			</div>
+		</div>
+		<div id="show"></div>
+	</body>
+</html>

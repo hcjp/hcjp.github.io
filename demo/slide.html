@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>滚动侧边栏</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src=''></script>
+		<style type="text/css">
+		#div1{width: 100px;height: 200px;background: #ccc;position: absolute;right: 0;}
+		</style>
+		<script type="text/javascript">
+		window.onscroll = window.onload = function(){
+			var oDiv = document.getElementById('div1');
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+			var newScrollTop = scrollTop + (document.documentElement.clientHeight - oDiv.offsetHeight)/2;
+			startMove(parseInt(newScrollTop));
+		}
+		var timer = null;
+		function startMove(iTarget){
+			var oDiv = document.getElementById('div1');
+			clearInterval(timer);
+			timer = setInterval(function(){
+				var iSpeed = (iTarget - oDiv.offsetTop)/8;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+				if(oDiv.offsetTop == iTarget){
+					clearInterval(timer);
+				}else{
+					oDiv.style.top = oDiv.offsetTop + iSpeed + 'px';
+				}
+			},30);
+		}
+		</script>
+	</head>
+	<body style="height:1000px;">
+		<div id="div1"></div>
+	</body>
+</html>

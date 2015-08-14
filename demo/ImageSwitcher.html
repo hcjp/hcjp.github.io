@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>图片切换</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src='public.js'></script>
+		<style type="text/css">
+		#button{margin: 0 auto;overflow: hidden;text-align: center;}
+		#wrap{width: 800px;height: 400px;margin: 30px auto;position: relative;}
+		#div1{width: 300px;height: 100px;background: #ccc;position: absolute;top: 100px;left: 50px;z-index: 0;}
+		#div2{width: 400px;height: 200px;background: #c2c;position: absolute;top: 50px;left: 200px;z-index: 22;}
+		#div3{width: 300px;height: 100px;background: #2cc;position: absolute;top: 100px;left: 450px;z-index: 0;}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oBtn1 = document.getElementById('doright');
+			var oBtn2 = document.getElementById('doleft');
+			var oDivs = document.getElementById('wrap').getElementsByTagName('img');
+			var arr = [];
+			for(var i = 0;i < oDivs.length;i++){
+				arr.push([getStyle(oDivs[i],'left'),getStyle(oDivs[i],'top'),getStyle(oDivs[i],'zIndex'),getStyle(oDivs[i],'width'),getStyle(oDivs[i],'height')]);
+			}
+			oBtn1.onclick = function(){
+				arr.push(arr.shift());
+				for(var i = 0;i < oDivs.length;i++){
+					oDivs[i].style.zIndex = arr[i][2];
+					buffer(oDivs[i],{'left':parseInt(arr[i][0]),'top':parseInt(arr[i][1]),'width':parseInt(arr[i][3]),'height':parseInt(arr[i][4])});
+				}
+			}
+			oBtn2.onclick = function(){
+				arr.unshift(arr.pop());
+				for(var i = 0;i < oDivs.length;i++){
+					oDivs[i].style.zIndex = arr[i][2];
+					buffer(oDivs[i],{'left':parseInt(arr[i][0]),'top':parseInt(arr[i][1]),'width':parseInt(arr[i][3]),'height':parseInt(arr[i][4])});
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="button">
+			<input type="button" value="←" id="doleft" />
+			<input type="button" value="→" id="doright" />
+		</div>
+		<!-- <div id="wrap">
+			<div id="div1">1</div>
+			<div id="div2">2</div>
+			<div id="div3">3</div>
+		</div> -->
+		<div id="wrap">
+			<img id="div1" src="../yijian/tab3.jpg"/>
+			<img id="div2" src="../yijian/tab5.jpg"/>
+			<img id="div3" src="../yijian/tab6.jpg"/>
+		</div>
+	</body>
+</html>

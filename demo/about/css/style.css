@@ -1,0 +1,37 @@
+*{margin: 0;padding: 0;font: 12px/1 "微软雅黑",Tahoma,Arial,"宋体",sans-serif;color: #666666;}
+a{text-decoration: none;}
+i,em{font-style: normal;}
+ul,li,dl,dd,dt{list-style-type: none;}
+body{background: #FFFFFF;}
+input{border: none;outline: none;}
+img{border: none;}
+/*public*/
+.fl{float: left;}
+.fr{float: right;}
+.clear { zoom:1; }
+.clear:after { content:''; display:block; clear:both; }
+.wrap{width:100%;background: #F1F1F1;}
+/*layout*/
+.head,.main,.footer{margin: 0 auto;}
+.head{height: 70px;width: 715px;padding-left: 285px;position: relative;}
+.banner{height: 285px;width: 100%;min-width:1000px;background:url(../images/banner1.jpg) no-repeat center top;}
+.main{width: 1000px;padding-top: 30px;overflow: hidden;padding-bottom: 94px;background: #F1F1F1;}
+.footer{height: 42px;width: 1000px;line-height: 42px;text-align: center;}
+.nav{width: 228px;height: 406px;}
+.rig-con div{width: 565px;min-height: 400px;padding-right: 137px;background: url(../images/content_bg.png) no-repeat right bottom;display: none;}
+/*head*/
+.head a.logo{display:block;width: 135px;height: 36px;position: absolute;left: 0px;top: 19px;text-indent: -999px;background: url(../images/logo.png);}
+.head p a{height:70px;line-height: 70px;padding: 0 20px;float: left;font-size: 14px;white-space: nowrap;}
+.head p a:hover,.head p a.select{background: #D1141B;color: #FFFFFF;}
+/*nav*/
+.nav a{display: block;width: 228px;height: 42px;line-height: 42px;text-align: center;color: #747474;background: #FFFFFF;margin-bottom: 10px;font-size: 16px;}
+.nav a.select{background: #D1141B;color: #FFFFFF;}
+/*content*/
+.rig-con div h2{height: 73px;padding-top: 15px;margin-bottom: 32px;font-size: 30px;}
+.rig-con div h3{color: #CC0000;font-size: 13px;padding-bottom: 22px;}
+.rig-con div i{display: inline-block;height: 45px;line-height: 45px;border-bottom: 4px solid #D1141B;font-size: 22px;}
+.rig-con div img{width: 500px;margin: 0 auto;}
+.rig-con div p{padding-bottom: 22px;line-height: 26px;font-size: 14px;}
+.rig-con div p.indent{text-indent: 2em;}
+.rig-con div p.strong{font-weight: bold;}
+.rig-con div.curr{display: block;}

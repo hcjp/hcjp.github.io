@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>百叶窗效果</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src="public.js"></script>
+		<style type="text/css">
+		*{margin: 0;padding: 0;}
+		#wrap{width: 350px;border: 12px solid #EEE;border-radius: 10px;margin: 10px auto;padding: 5px;}
+		ul,li{list-style-type: none;}
+		ul{width: 300px;height: auto;}
+		li{width: 100%;height: 30px;position: relative;overflow: hidden;}
+		#wrap div{width: 100%;height: 60px;position: absolute;top: -30px;}
+		p{border-bottom: 1px dashed #ccc;font-size: 14px;line-height: 30px;height: 29px;}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+		3
+			var iNow = 0;
+			var timer = null;
+			var of = true;
+			setInterval(function(){
+				doChange();
+			},3000);
+			function doChange(){
+				var oDivs = document.getElementById('ul1').getElementsByTagName('div');
+
+					timer = setInterval(function(){
+						if(iNow == oDivs.length){
+							clearInterval(timer);
+							iNow = 0;
+							of = !of;
+						}else{
+							buffer(oDivs[iNow],{'top' : of ? 0 : -30});
+							iNow++;
+						}
+
+					},200);
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<ul id="ul1">
+				<li>
+					<div>
+						<p>点球大战回放：内马尔关键球 塞萨尔两次神扑</p>
+						<p>[3D战术分析]巴西暴露致命缺陷前景堪忧</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p>郝海东调侃：若02年打这支巴西队 国足有机会</p>
+						<p>哥伦比亚2-0乌拉圭 罗德里格斯进2球领跑射手榜</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p>点球大战回放：内马尔关键球 塞萨尔两次神扑</p>
+						<p>[3D战术分析]巴西暴露致命缺陷前景堪忧</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p>郝海东调侃：若02年打这支巴西队 国足有机会</p>
+						<p>哥伦比亚2-0乌拉圭 罗德里格斯进2球领跑射手榜</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p>点球大战回放：内马尔关键球 塞萨尔两次神扑</p>
+						<p>[3D战术分析]巴西暴露致命缺陷前景堪忧</p>
+					</div>
+				</li>
+				<li>
+					<div>
+						<p>郝海东调侃：若02年打这支巴西队 国足有机会</p>
+						<p>哥伦比亚2-0乌拉圭 罗德里格斯进2球领跑射手榜</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</body>
+</html>

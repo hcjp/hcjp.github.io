@@ -1,0 +1,438 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>易建科技</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src='public.js'></script>
+		<style type="text/css">
+		*{padding: 0;margin: 0;}
+		/*公共*/
+		.middle{margin: 0 auto;}
+		li{list-style-type: none;float: left;}
+		a{text-decoration: none;}
+		/**/
+		html,body{width: 100%;font-family: Microsoft YaHei,SimSun,SimHei;}
+		#box_head{background: #fff;}
+		#head{width: 1000px;height: 100px;}
+		#box_nav{background: url(nav_bg.gif) repeat-x;}
+		#nav{width: 1000px;height: 41px;}
+		#box_slide{width: 100%;height: 292px;background: #a9a;min-width: 1000px;position: relative;overflow: hidden;}
+		#main{width: 1000px;overflow: hidden;}
+		#box_content1{width: 1000px;height: 240px;margin-bottom: 20px;overflow: hidden;}
+		#box_content2{width: 1000px;height: 200px;}
+		#box_foot{width: 100%;height: 214px;background: #363636;}
+
+		#navli li{margin: 0 10px;}
+		#navli a{height: 40px;line-height: 40px;padding: 0 16px 0 13px;font-size: 14px;color: #353535;float: left;}
+		.iconSprites{display: block;width: 20px;height: 20px;background: url(cssSprites.png);float: left;margin: 12px 5px 0 0;}
+		.nav1{background-position: 0px -80px;}
+		.nav2{background-position: -35px -80px;}
+		.nav3{background-position: -70px -80px;}
+		.nav4{background-position: -105px -80px;}
+		.nav5{background-position: -140px -80px;}
+		.nav6{background-position: -175px -80px;}
+		.nav7{background-position: -210px -80px;}
+
+		#logo{float: left;width: 260px;height: 32px;background: url(cssSprites.png);margin-top: 46px;}
+		#server{float: right;width: 140px;height: 35px;background: url(cssSprites.png) -661px 0;margin-top: 46px;}
+
+		/*slide*/
+		#slide{position: absolute;left: 0;}
+		#slide img{border:none;width: 1900px;position: relative;}
+		#page{position: absolute;width: 100%;text-align: center;bottom: 0;}
+		#page a{width: 13px;height: 13px;background: url(imagehei.png);margin-right: 10px;display: inline-block;}
+		#page a.active{background: url(imagefen.png);}
+
+		/*content1*/
+		#content1{position: relative;}
+		#content1 li{width: 143px;height: 66px;padding: 35px 0 0 0;color: #FFF;cursor: pointer;position: relative;}
+		#content1 h3,#content1 h5{font-weight: 200;text-indent: 8px;}
+		#content1 li span{display: block;width: 143px;height: 11px;background: url('tabList_sel.png') no-repeat scroll center bottom transparent;position: absolute;display: none;margin-top: 17px;z-index: 9;}
+		.tab_pic{float: none;width: 285px;height: 140px;background: #ccc;}
+		.tab_pic img{width: 100%;border: none;}
+		.cloneTab{position: absolute;top: 241px;}
+		#tab_con{width: 676px;height: 130px;background: #F0F0F0;float: right;margin-top: -40px;padding: 20px;font-size: 14px;line-height: 24px;color: #6A6A6A;text-indent: 20px;}
+
+		#content2_left{width: 284px;height:188px;float: left;position: relative;}
+		#content2_left img{width: 100%;}
+		#content2_left span{position: absolute;display: block;width: 264px;padding: 10px;bottom: 0;font-size: 12px;font-weight: 400;color: #fff;background: rgba(0,0,0,.7);}
+		#content2_right{width: 696px;float: right;padding: 0 10px;}
+		#content2_con_top span{width: 546px;background: url(dit_01.gif) repeat-x 60%;display: block;height: 22px;float: left;margin-right: 10px;}
+		#content2_con_top h3{border-left: 4px solid #FF6000;float: left;display: block;width: 80px;font-size: 18px;font-weight: 200;color: #444;padding: 0px 5px;}
+		#content2_con_top a{font-size: 12px;}
+		div.con{height: 55px;padding: 10px;}
+		.con_title{color: #000;font-size: 14px;font-weight: 400;}
+		.con_con{color: #444;font-size: 12px;font-weight: 400;text-indent: 20px;}
+		#content2_con span{font-size: 12px;color: #C3B6AA;}
+
+		#foot{width: 1000px;}
+		#foot ul{border-right: 1px solid #717171;width: 400px;height: 82px;float: left;}
+		#foot li{margin:5px 5px 5px 0;}
+		#foot h4{margin: 20px 0;font-size: 14px;color: #818181;float: left;width: 100%;}
+		#textLink{font-size: 12px;float: left;width: 218px;padding:0 10px;color: #818181;line-height: 20px;}
+		#footR{width: 346px;float: right;}
+		#footRtop{padding-left: 40px;margin-bottom: 20px;}
+		#footRtop,#footRtop a{color: #818181;font-size: 14px;line-height: 24px;height: 24px;}
+		#footRtop a{margin: 0 10px 0 0;}
+		.icon_sinaBg{width: 24px;height: 24px;background-position: 0px -210px;}
+		.icon_wxBg{width: 24px;height: 24px;background-position: -61px -210px;}
+		#footCon{margin-bottom: 10px;float: left;}
+		#copy{font-size: 12px;color: #818181;text-align: center;height: 20px;line-height: 20px;width: 100%;float: left;}
+		#footR select{float: right;height: 20px;}
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oUls = document.getElementById('slide');
+			var oLis = oUls.getElementsByTagName('li');
+			var oimg = oUls.getElementsByTagName('img');
+
+			var oPage = document.getElementById('page');
+			var oAs = oPage.getElementsByTagName('a');
+
+			var content1 = document.getElementById('content1');
+			var oLContent1s = content1.getElementsByTagName('li');
+			var oLspans = content1.getElementsByTagName('span');
+			var color = ['#00C6FF','#007ECD','#A848B5','#E54E4B','#FFC000','#00B0B2','#86CB00'];
+			var con = [
+				'易建科技拥有多年的行业及通用解决方案服务经验。行业解决方案主要着力于电子政务、旅游交通、金融等各个领域，而在通用解决方案领域，主力发展行业前沿的企业管理信息化、大数据综合服务、企业级移动应用等方面。',
+				'易建科技拥有丰富的系统集成实施经验并拥有系统集成二级资质。结合物联网和云计算前沿技术，易建科技可为客户提供企业级的智能化和IT基础架构的总体设计、方案配置、项目实施和项目管理等系统集成服务。',
+				'易建科技依托多年的云计算技术积累，从客户需求出发并结合行业发展特点，通过计算资源整合、存储资源整合、网络资源整合、分布式应用架构、大数据处理、虚拟化等技术手段，为客户提供从云计算基础架构平台搭建到云计算资源租用服务的云计算一体化解决方案，旨在帮助用户获得良好的应用、数据交付体验，从根本上提升IT环境的高效性、灵活性、自助性、可维护性、安全性和业务连续性。',
+				'易建科技借助基于海航集团业务特点提供信息化解决方案并实践验证的优势，满足海航集团在仓储、物流、定位、监控等业务领域业务量大、流程复杂、服务品质要求高的一贯需求，在物联网技术领域形成了扎实的积累，自主研发了物联网业务基础平台和业务应用组件，为现代化的基于物联网技术的智能化管理提供整体解决方案，专注面向智慧农业、食品追溯、智能仓储与物流、智能机房监控方向。',
+				'易建科技在沈阳、北京、西安、厦门、海口五地均有专业技术团队驻点，并拥有7*24小时服务热线支持，以专业态度、快捷响应和完善服务向客户提供优质可靠的IT技术服务，确保客户业务系统稳定可靠的运行。',
+				' 易建科技提供的BPO服务主要为电信增值服务。易建科技与中国移动、中国联通、中国电信三家运营商共同打造了功能强大的通信应用平台，拥有合法的全网短信、彩信、呼叫中心通道和特服号码群组，可为国内客户提供完善的电信增值服务。',
+				'易建科技能够为客户灵活地提供各种不同专长、经验丰富的管理和技术人才，主要包括：咨询顾问、项目经理、架构师、IBM iSeries开发工程师、Java开发工程师、.NET/C#开发工程师。'
+				]
+
+			var oTabpic = getElementsByClassName('tab_pic','','div')[0];
+			var oTabcon = document.getElementById('tab_con');
+
+			var iIndex = 1;
+			var imgWidth = 1900;
+			oUls.style.width = imgWidth * oLis.length + 'px';
+			function setImg(){
+				var viweWidth = document.documentElement.clientWidth || body.documentElement.clientWidth;
+				if(viweWidth > 1000){
+					for(var i = 0;i < oimg.length;i++){
+						oimg[i].style.left = -(imgWidth - viweWidth)/2 + 'px';
+					}
+				}
+			}
+			setInterval(function(){
+				for (i = 0; i < oAs.length; i++){
+					if(iIndex > 2){
+						oAs[i].className = i == 0 ? "active" : "";
+					}else{
+						oAs[i].className = i == iIndex ? "active" : "";
+					}
+				}
+				buffer(oUls,{left:-imgWidth*iIndex},function(){
+					if(iIndex == 2){
+						oLis[0].style.position = 'relative';
+						oLis[0].style.left = 3*imgWidth + 'px';
+					}else if(iIndex >= 3){
+						iIndex = 0;
+						oLis[0].style.position = 'static';
+						oUls.style.left = 0 + 'px';
+					}
+					iIndex++
+				});
+			},2000);
+			setImg();
+			window.onresize= function(){
+				setImg();
+			}
+			/*按钮*/
+			for(var i = 0;i < oAs.length;i++){
+				oAs[i].index = i;
+				oAs[i].onclick = function(){
+					 aCheckAbg(this);
+				}
+			}
+			function aCheckAbg(obj){
+				iIndex = obj.index;
+				for (i = 0; i < oAs.length; i++){
+					oAs[i].className = i == obj.index ? "active" : "";
+					if(i == 2){
+						oLis[0].style.position = 'static';
+					}
+					buffer(oUls,{left:-imgWidth*iIndex});
+				}
+			}
+			/*content1*/
+			
+			for(var i = 0;i < oLContent1s.length;i++){
+				oLContent1s[i].index = i;
+				oLContent1s[i].style.background = color[i];
+				oLContent1s[i].onmouseover = function(){
+					lCheckAbg(this);
+					lCheckI(this,'in');
+				}
+				oLContent1s[i].onmouseout = function(){}
+
+			}
+			/*init*/
+			oLContent1s[0].style.background = '#fff';
+			oLContent1s[0].style.color = '#9D9DAA';
+			oLspans[0].style.display = 'block';
+			oTabcon.innerHTML = con[0];
+			/*init_end*/
+			function lCheckAbg(obj,fl){
+				oTabcon.innerHTML = con[obj.index];
+				for(var i = 0;i < oLContent1s.length;i++){
+					oLContent1s[i].style.background = color[i];
+					oLContent1s[i].style.color = '#fff';
+					oLspans[i].style.display = 'none';
+				}
+				
+				obj.style.background = '#fff';
+				obj.style.color = '#9D9DAA';
+				oLspans[obj.index].style.display = 'block';
+				
+			}
+			var tmp = null;
+			var oIndex = 1;
+			function lCheckI(obj){
+				if(oIndex == obj.index+1){return;}
+					if(tmp){
+						content1.removeChild(tmp);
+					}
+					tmp = oTabpic.cloneNode(true);
+					tmp.className = 'cloneTab';
+					tmp.innerHTML = '<img src="tab' + (obj.index+1) + '.jpg">';
+					content1.appendChild(tmp);
+					oTabpic.innerHTML = '<img src="tab' + oIndex + '.jpg">';
+					oIndex = obj.index + 1;
+					buffer(tmp,{top:101});
+				}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box_head">
+				<div id="head" class="middle">
+					<div id="logo"></div>
+					<div id="server"></div>
+				</div>
+			</div>
+			<div id="box_nav">
+				<div id="nav" class="middle">
+					<ul id="navli">
+						<li>
+							<a href="">
+								<span class="iconSprites nav1"></span>首页
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<span class="iconSprites nav2"></span>解决方案
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<span class="iconSprites nav3"></span>外包服务
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<span class="iconSprites nav4"></span>客户支持
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<span class="iconSprites nav5"></span>新闻中心
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<span class="iconSprites nav6"></span>关于易建
+							</a>
+						</li>
+						<li>
+							<a href="">
+								<span class="iconSprites nav7"></span>诚聘英才
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			
+			<div id="box_slide" class="middle">
+				<ul id="slide">
+					<li>
+						<img src="test1.jpg" />
+					</li>
+					<li>
+						<img src="test2.jpg" />
+					</li>
+					<li>
+						<img src="test3.jpg" />
+					</li>
+				</ul>
+				<div id="page">
+					<a href="javascript:;" class="active"></a>
+					<a href="javascript:;"></a>
+					<a href="javascript:;"></a>
+				</div>
+			</div>
+			<div id="main" class="middle">
+				<div id="box_content1">
+					<ul id="content1">
+						<li style="width:142px;">
+							<h3>应用解决方案</h3>
+							<h5>solution</h5>
+							<span></span>
+						</li>
+						<li>
+							<h3>系统集成</h3>
+							<h5>System Integration</h5>
+							<span></span>
+						</li>
+						<li>
+							<h3>云计算</h3>
+							<h5>Cloud Computing</h5>
+							<span></span>
+						</li>
+						<li>
+							<h3>物联网</h3>
+							<h5>The Internet of Tings</h5>
+							<span></span>
+						</li>
+						<li>
+							<h3>技术服务</h3>
+							<h5>IT Service</h5>
+							<span></span>
+						</li>
+						<li>
+							<h3>业务流程外包</h3>
+							<h5>BPO</h5>
+							<span></span>
+						</li>
+						<li>
+							<h3>专业人才外包</h3>
+							<h5>ITO</h5>
+							<span></span>
+						</li>
+					</ul>
+					<div class="tab_pic">
+						<img src="tab1.jpg">
+					</div>
+					<div id="tab_con"></div>
+				</div>
+				<div id="box_content2">
+					<div id="content2_left">
+						<img src="aa.jpg">
+						<span><p>罗牛山股份有限公司钟金雄总裁一行莅临易建科技考察参观(图)</p></span>
+					</div>
+					<div id="content2_right">
+						<div id="content2_con_top">
+							<h3>公司动态</h3>
+							<span></span>
+							<a href="">更多...</a>
+						</div>
+						<div id="content2_con">
+							<div class="con">
+								<a href="" class="con_title">精心准备 周密部署——易建科技保障海航集团2014年工作会议圆满结...</a><span>2014-6-6</span><br>
+								<a href="" class="con_con">2014年1月14日-16日，海航集团2014年工作会议在三亚唐拉雅秀酒店隆重召开，易建科技积极参与本届年会的筹办、保障工作，并以IT人的创新和激情为年终会增添了创新亮点。 </a>
+							</div>
+							<div class="con">
+								<a href="" class="con_title">易建科技2014年新春合作伙伴答谢会圆满举行(图)</a><span>2014-6-6</span><br>
+								<a href="" class="con_con">新年伊始，易建科技满载着感恩之心与无限谢意，于1月13日在海口温情举办了主题为“携手共进 再创辉煌”的新春合作伙伴答谢会。易建科技的各级领导与合作伙伴欢聚一堂，共叙友谊，同谋合作之大计。</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="box_foot">
+				<div id="foot" class="middle">
+					<h4>商务合作</h4>
+					<div id="footCon">
+						<ul>
+							<li>
+								<a href="">
+									<img src="foot_icon_02.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_03.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_04.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_05.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_06.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_07.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_08.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_09.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_10.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_11.png">
+								</a>
+							</li>
+							<li>
+								<a href="">
+									<img src="foot_icon_12.png">
+								</a>
+							</li>
+						</ul>
+						<div id="textLink">
+							<p>IBM一级资质代理商（Business Partner)</p>
+							<p>微软金牌能力合作伙伴</p>
+							<p>ORACLE金牌合作伙伴</p>
+							<p>H3C金牌认证代理商</p>
+						</div>
+						<div id="footR">
+							<div id="footRtop">
+								<a href="" class="iconSprites icon_sinaBg"></a>
+								<a href="" class="iconSprites icon_wxBg"></a>
+								<a href="">联系我们</a>|
+								<a href="">隐私条款</a>|
+								<a href="">网站地图</a>
+							</div>
+							<img src="foot_icon_01.png">
+							<select>
+								<option>友情链接</option>
+								<option>海南航空股份有限公司</option>
+							</select>
+						</div>
+					</div>
+					<div id="copy">海航集团下属核心IT企业 © 2013 海南易建科技股份有限公司版权所有 琼ICP备10200524号-1</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>第一个元素后移</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src=''></script>
+		<style type="text/css">
+		</style>
+		<script type="text/javascript">
+		window.onload = function(){
+			var oBtn1 = document.getElementById('btn1');
+			var oDiv1 = document.getElementById('div1');
+			oBtn1.onclick = function(){
+				var arr = oDiv1.innerHTML.split(',');
+				arr.push(arr.shift());
+				oDiv1.innerHTML = arr;
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="div1">1,2,3,4</div>
+		<input type="button" id="btn1" value="第一个元素后移" />
+	</body>
+</html>

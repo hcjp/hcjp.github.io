@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<meta name='description' content=''/>
+		<meta name='keywords' content=''/>
+		<meta name='robort' content='all'/>
+		<meta name='autor' content='Hank'/>
+		<title>DIV上下移动位置</title>
+		<link rel="stylesheet" type="text/css" href=""/>
+		<script type="text/javascript" src='jquery.js'></script>
+		<style type="text/css">
+		#wrap{width: 350px;height: 500px;border: 12px solid #EEE;border-radius: 10px;margin: 10px auto;padding: 5px;}
+		#box{width: 100px;padding: 5px;border:1px solid #cc2;margin: 20px auto;}
+		.test{width: 100px;height: 100px;background: #ccc;margin-bottom: 2px;}
+		.flag{background: #c2c;}
+		#botton{text-align: center;}
+		</style>
+		<script type="text/javascript">
+		$(function(){
+			$('.test').each(function(){
+				$(this).click(function(){
+					$(this).addClass('flag').siblings().removeClass('flag');
+				});
+			});
+			$('#doUp').click(function(){
+				var obj = $('.flag').prev();
+				if(obj[0]){
+					var tmp = $('.flag').clone(true);
+					$('.flag').fadeOut('slow',function(){
+						$(this).remove();
+						tmp.fadeIn('slow').insertBefore(obj);
+					});
+				}
+			});
+			$('#doDown').click(function(){
+				var obj = $('.flag').next();
+				if(obj[0]){
+					var tmp = $('.flag').clone(true);
+					$('.flag').fadeOut('slow',function(){
+						$(this).remove();
+						tmp.fadeIn('slow').insertAfter(obj);
+					});
+				}
+			});
+			console.log(document.getElementById('doUp'));
+		});
+
+
+
+
+		//public
+		function getElementsByClassName (className) {
+			var all = document.all ? document.all : document.getElementsByTagName('*');
+			var elements = new Array();
+			for (var e = 0,i=0; e < all.length; e++) {
+				if (all[e].className == className) {
+					elements[i] = all[e];
+					i++
+					continue;
+				}
+			}
+			return elements;
+		}
+		function hasClass(obj,cls) {
+			return obj.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+		}
+		function aaddClass(obj,cls) {//另一种
+		if (!this.hasClass(obj,cls)) obj.className += " "+cls;
+		}
+
+		function addClass(obj,newClass){
+			//获取obj标签对象的class
+			var oClass = obj.className;
+			//如果oClass为空则直接赋newClass
+			if(oClass == ''){
+				obj.className = newClass;
+			}else{
+			//1、判断当前标签里是否含有newClass,如果含有newClass则return跳出不赋值，避免反复赋同样的newClass
+			var cutClass = oClass.split(' ');
+			for(var i = 0;i<cutClass.length;i++){
+				if(cutClass[i] == newClass){
+					return;
+				}
+			}
+			//2、如果不含有newClass,则在原来oClass的基础上添加新的newClass
+			obj.className = oClass + ' ' + newClass;
+			}
+		}
+		function removeClass(obj,cls) {
+			if (hasClass(obj,cls)) {
+				var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+				obj.className=obj.className.replace(reg,' ');
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="box">
+				<div class="test">1</div>
+				<div class="test">2</div>
+				<div class="test">3</div>
+				<div class="test">4</div>
+			</div>
+			<div id="botton">
+				<input type="button" id="doUp" value="↑" />
+				<input type="button" id="doDown" value="↓" />
+			</div>
+		</div>
+	</body>
+</html>

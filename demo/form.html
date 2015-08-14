@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>操作表单</title>
+	<link rel="stylesheet" type="text/css" href="">
+	<script type="text/javascript" src=""></script>
+	<style type="text/css">
+	#warp{width:500px;margin:0 auto;overflow:hidden;zoom:1;}
+	.demo {color: transparent;text-shadow: 0 0 1px #f96;}
+	#show{width: 300px;height: 100px;display: none;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var oForm = {};
+		oForm.username = document.getElementById('username').value;
+		oForm.email = document.getElementById('email').value;
+		document.getElementById('send').onclick = function(){
+			show.style.display = 'block';
+			var json = JSON.stringify(oForm); 
+			show.value = json;
+		}
+	}
+	</script>
+</head>
+<body>
+	<div id="warp">
+		<form method="" action="">
+			<label for="username" class="demo">用户名:</label><input type="text" id="username" name="username" /><br/>
+			<label for="email" class="demo">E-mail:</label><input type="text" id="email" name="email" /><br/>
+			<input id="send" type="button" value="提交" />
+		</form>
+		<textarea id="show"></textarea>
+	</div>
+</body>
+</html>
